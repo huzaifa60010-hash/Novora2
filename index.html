@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVORA — Contemporary Luxury Fashion, Beauty &amp; Lifestyle</title>
+    <meta name="description" content="Curated everyday luxury: tailored fashion, botanical beauty and skincare, precision audio, and artisan leather goods." />
+    <meta property="og:title" content="NOVORA — Contemporary Luxury Fashion, Beauty & Lifestyle" />
+    <meta property="og:description" content="Curated everyday luxury: tailored fashion, botanical beauty, precision audio, and artisan accessories." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%2312100f'/%3E%3Crect x='4' y='4' width='40' height='40' rx='9' fill='none' stroke='%23D6B57C' stroke-opacity='0.5' stroke-width='1.2'/%3E%3Cpath d='M12.5 14H18L31.2 30.5V15.3H29V14H35.5V15.3H33V34H30.6L16.2 16V32.7H18.5V34H12.5V32.7H14.4V15.3H12.5V14Z' fill='%23FAF8F5'/%3E%3Crect x='18.5' y='36.5' width='11' height='1.6' rx='0.8' fill='%23DFC08A'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+      .novora-static-shell,
+      .novora-static-shell * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      .novora-static-shell {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        background-color: #fafaf9;
+        color: #1c1917;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      .novora-static-shell .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+      
+      /* Header & Top Bar */
+      .novora-static-shell .top-promo {
+        background: #1c1917;
+        color: #e7e5e4;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 600;
+        text-align: center;
+        padding: 8px 16px;
+      }
+      .novora-static-shell header {
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid #e7e5e4;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .novora-static-shell .header-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      @media(min-width: 640px) {
+        .novora-static-shell .header-inner {
+          padding: 16px 24px;
+          gap: 20px;
+        }
+      }
+      .novora-static-shell .logo {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        color: #0c0a09;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+      }
+      @media(min-width: 640px) { .novora-static-shell .logo { font-size: 26px; } }
+      .novora-static-shell .nav-links {
+        display: none;
+        gap: 24px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      @media(min-width: 768px) { .novora-static-shell .nav-links { display: flex; } }
+      .novora-static-shell .nav-links a {
+        color: #44403c;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .novora-static-shell .nav-links a:hover { color: #9333ea; }
+      .novora-static-shell .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+      .novora-static-shell .search-box {
+        position: relative;
+        display: none;
+      }
+      @media(min-width: 768px) { .novora-static-shell .search-box { display: block; } }
+      .novora-static-shell .search-input {
+        background: #f5f5f4;
+        border: 1px solid #e7e5e4;
+        border-radius: 9999px;
+        padding: 8px 16px 8px 36px;
+        font-size: 13px;
+        width: min(220px, 38vw);
+        outline: none;
+        transition: all 0.2s;
+      }
+      .novora-static-shell .search-input:focus {
+        border-color: #1c1917;
+        background: #fff;
+        width: min(260px, 45vw);
+      }
+      .novora-static-shell .search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 13px;
+        color: #a8a29e;
+      }
+      .novora-static-shell .action-btn {
+        background: none;
+        border: 1px solid #e7e5e4;
+        border-radius: 9999px;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1c1917;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s;
+      }
+      .novora-static-shell .action-btn:hover {
+        background: #1c1917;
+        color: #fff;
+        border-color: #1c1917;
+      }
+      .novora-static-shell .cart-badge {
+        background: #9333ea;
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 6px;
+        border-radius: 9999px;
+      }
+
+      /* Hero Section */
+      .novora-static-shell .hero {
+        position: relative;
+        background: linear-gradient(rgba(12,10,9,0.45), rgba(12,10,9,0.65)), url('./images/novora_beauty_banner.jpg'), url('./public/images/novora_beauty_banner.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff;
+        text-align: center;
+        padding: 110px 20px 100px;
+      }
+      .novora-static-shell .hero-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 12px;
+        font-weight: 700;
+        color: #d8b4fe;
+        margin-bottom: 12px;
+      }
+      .novora-static-shell .hero-title {
+        font-size: 46px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+        line-height: 1.15;
+      }
+      @media(min-width: 768px) { .novora-static-shell .hero-title { font-size: 58px; } }
+      .novora-static-shell .hero-subtitle {
+        font-size: 17px;
+        color: #e7e5e4;
+        max-width: 620px;
+        margin: 0 auto 32px;
+        font-weight: 300;
+      }
+      .novora-static-shell .hero-cta {
+        display: inline-block;
+        background: #ffffff;
+        color: #0c0a09;
+        font-weight: 600;
+        padding: 14px 32px;
+        border-radius: 9999px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: transform 0.2s, background 0.2s;
+        cursor: pointer;
+      }
+      .novora-static-shell .hero-cta:hover {
+        background: #f5f5f4;
+        transform: translateY(-2px);
+      }
+
+      /* Category Pills Bar */
+      .novora-static-shell .category-bar {
+        max-width: 1280px;
+        width: 100%;
+        margin: 24px auto 0;
+        padding: 0 16px 8px;
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+      }
+      @media(min-width: 640px) {
+        .novora-static-shell .category-bar {
+          margin: 32px auto 0;
+          padding: 0 24px 8px;
+        }
+      }
+      .novora-static-shell .cat-pill {
+        background: #ffffff;
+        border: 1px solid #e7e5e4;
+        border-radius: 9999px;
+        padding: 8px 18px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #57534e;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: all 0.2s;
+      }
+      .novora-static-shell .cat-pill.active,
+      .novora-static-shell .cat-pill:hover {
+        background: #1c1917;
+        color: #fff;
+        border-color: #1c1917;
+      }
+
+      /* Products Grid */
+      .novora-static-shell .container {
+        max-width: 1280px;
+        width: 100%;
+        margin: 32px auto 64px;
+        padding: 0 16px;
+      }
+      @media(min-width: 640px) {
+        .novora-static-shell .container {
+          margin: 40px auto 80px;
+          padding: 0 24px;
+        }
+      }
+      .novora-static-shell .section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .novora-static-shell .section-title {
+        font-size: 30px;
+        font-weight: 700;
+        color: #0c0a09;
+      }
+      .novora-static-shell .section-subtitle {
+        color: #78716c;
+        font-size: 14px;
+        margin-top: 4px;
+      }
+      .novora-static-shell .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+        gap: 20px;
+      }
+      @media(min-width: 640px) {
+        .novora-static-shell .grid { gap: 28px; }
+      }
+      .novora-static-shell .card {
+        background: #ffffff;
+        border: 1px solid #e7e5e4;
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transform 0.25s, box-shadow 0.25s;
+        display: flex;
+        flex-direction: column;
+      }
+      .novora-static-shell .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px -8px rgba(0,0,0,0.08);
+      }
+      .novora-static-shell .card-img-wrap {
+        position: relative;
+        overflow: hidden;
+        background: #f5f5f4;
+        height: 280px;
+      }
+      .novora-static-shell .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+      }
+      .novora-static-shell .card:hover .card-img { transform: scale(1.04); }
+      .novora-static-shell .card-tag {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(28, 25, 23, 0.85);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 9999px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .novora-static-shell .card-body {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .novora-static-shell .card-brand {
+        font-size: 11px;
+        font-weight: 700;
+        color: #a8a29e;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+      }
+      .novora-static-shell .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #1c1917;
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+      .novora-static-shell .card-desc {
+        font-size: 13px;
+        color: #78716c;
+        line-height: 1.5;
+        margin-bottom: 16px;
+        flex: 1;
+      }
+      .novora-static-shell .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid #f5f5f4;
+      }
+      .novora-static-shell .card-price {
+        font-size: 19px;
+        font-weight: 800;
+        color: #0c0a09;
+      }
+      .novora-static-shell .add-btn {
+        background: #1c1917;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .novora-static-shell .add-btn:hover { background: #9333ea; }
+
+      /* Trust Badges */
+      .novora-static-shell .trust-strip {
+        background: #ffffff;
+        border-top: 1px solid #e7e5e4;
+        border-bottom: 1px solid #e7e5e4;
+        padding: 36px 20px;
+        margin-top: 60px;
+      }
+      .novora-static-shell .trust-grid {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+        gap: 24px;
+        text-align: center;
+      }
+      .novora-static-shell .trust-item h4 {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .novora-static-shell .trust-item p {
+        font-size: 13px;
+        color: #78716c;
+      }
+
+      /* Footer */
+      .novora-static-shell footer {
+        background: #0c0a09;
+        color: #a8a29e;
+        padding: 48px 16px 30px;
+        font-size: 13px;
+      }
+      @media(min-width: 640px) {
+        .novora-static-shell footer { padding: 60px 24px 30px; }
+      }
+      .novora-static-shell .footer-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+        gap: 32px;
+        margin-bottom: 40px;
+      }
+      .novora-static-shell .footer-col h5 {
+        color: #fff;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        letter-spacing: 0.05em;
+      }
+      .novora-static-shell .footer-col ul { list-style: none; }
+      .novora-static-shell .footer-col li { margin-bottom: 10px; }
+      .novora-static-shell .footer-col a {
+        color: #a8a29e;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .novora-static-shell .footer-col a:hover { color: #fff; }
+      .novora-static-shell .footer-bottom {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding-top: 24px;
+        border-top: 1px solid #292524;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      /* In-Page Toast */
+      .novora-static-shell .toast {
+        position: fixed;
+        bottom: 24px;
+        right: 16px;
+        max-width: calc(100vw - 32px);
+        background: #0c0a09;
+        color: #fff;
+        padding: 14px 22px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        font-size: 14px;
+        font-weight: 600;
+        display: none;
+        align-items: center;
+        gap: 10px;
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The Root Element contains the pre-rendered static fallback shell -->
+    <!-- When served via Vite/Express/Firebase, React mounts on #root and removes this shell completely -->
+    <div id="root">
+      <!-- STATIC_FALLBACK_START -->
+      <div class="novora-static-shell">
+      
+      <!-- Top Promotional Bar -->
+      <div class="top-promo">
+        Complimentary Shipping Across Pakistan on Orders Over PKR 5,000 | Code: NOVORA10
+      </div>
+
+      <!-- Navigation Header -->
+      <header>
+        <div class="header-inner">
+          <a href="#" class="logo font-serif">
+            NOVORA
+          </a>
+
+          <nav class="nav-links">
+            <a href="#" onclick="filterCat('all')">Home</a>
+            <a href="#catalog" onclick="filterCat('beauty')">Beauty</a>
+            <a href="#catalog" onclick="filterCat('fashion')">Fashion</a>
+            <a href="#catalog" onclick="filterCat('makeup')">Makeup</a>
+            <a href="#catalog" onclick="filterCat('fragrance')">Fragrance</a>
+          </nav>
+
+          <div class="header-actions">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="storeSearch" class="search-input" placeholder="Search luxury products..." oninput="searchProducts(this.value)">
+            </div>
+            
+            <button class="action-btn" onclick="openLoginNotice()">
+              <span>Account</span>
+            </button>
+
+            <button class="action-btn" onclick="openCartNotice()">
+              <span>Bag</span>
+              <span class="cart-badge" id="bagCount">0</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Banner -->
+      <section class="hero">
+        <div class="hero-eyebrow">Haute Parfumerie & Luxury Pret</div>
+        <h1 class="hero-title font-serif">Curated Elegance & Modern Luxury</h1>
+        <p class="hero-subtitle">Discover handcrafted designer wear, artisanal cosmetics, and rare botanical fragrances created for the discerning patron.</p>
+        <a href="#catalog" class="hero-cta">Explore Collection</a>
+      </section>
+
+      <!-- Category Navigation Filter Bar -->
+      <div class="category-bar">
+        <button class="cat-pill active" onclick="filterCat('all', this)">All Collections</button>
+        <button class="cat-pill" onclick="filterCat('beauty', this)">Skincare & Beauty</button>
+        <button class="cat-pill" onclick="filterCat('makeup', this)">Artisan Makeup</button>
+        <button class="cat-pill" onclick="filterCat('fashion', this)">Luxury Pret</button>
+        <button class="cat-pill" onclick="filterCat('fragrance', this)">Haute Fragrance</button>
+        <button class="cat-pill" onclick="filterCat('accessories', this)">Timepieces & Jewelry</button>
+      </div>
+
+      <!-- Products Grid -->
+      <main class="container" id="catalog">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title font-serif">Featured Acquisitions</h2>
+            <p class="section-subtitle">Exclusively formulated and tailored for the NOVORA boutique.</p>
+          </div>
+        </div>
+
+        <div class="grid" id="productsGrid">
+          
+          <!-- Product 1: Makeup -->
+          <div class="card" data-cat="makeup">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_cat_beauty_1792421789012.jpg" onerror="this.onerror=null;this.src='./public/images/novora_cat_beauty_1792421789012.jpg';" alt="Velvet Matte Lip Suede" referrerPolicy="no-referrer">
+              <span class="card-tag">Bestseller</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Makeup</div>
+              <h3 class="card-title">Velvet Matte Lip Suede — Bordeaux Noir</h3>
+              <p class="card-desc">Hydrating hyaluronic acid infusion with intensely pigmented 12-hour weightless matte finish.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 3,450</div>
+                <button class="add-btn" onclick="addToBag('Velvet Matte Lip Suede', 3450)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 2: Skincare / Beauty -->
+          <div class="card" data-cat="beauty">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_beauty_banner.jpg" onerror="this.onerror=null;this.src='./public/images/novora_beauty_banner.jpg';" alt="24K Cellular Serum" referrerPolicy="no-referrer">
+              <span class="card-tag">Elixir</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Skincare</div>
+              <h3 class="card-title">24K Gold Cellular Renewal Serum</h3>
+              <p class="card-desc">Pure botanical peptides and colloidal gold micro-crystals designed to restore radiant elasticity.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 8,900</div>
+                <button class="add-btn" onclick="addToBag('24K Gold Cellular Renewal Serum', 8900)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 3: Fragrance -->
+          <div class="card" data-cat="fragrance">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_prod_perfume_1792423143536.jpg" onerror="this.onerror=null;this.src='./public/images/novora_prod_perfume_1792423143536.jpg';" alt="Royal Oud Perfume" referrerPolicy="no-referrer">
+              <span class="card-tag">Haute Parfumerie</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Parfums</div>
+              <h3 class="card-title">Royal Oud & Amber Extrait de Parfum</h3>
+              <p class="card-desc">Aged Cambodian agarwood distilled with Damascene rose, Madagascar vanilla, and golden amber.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 18,500</div>
+                <button class="add-btn" onclick="addToBag('Royal Oud & Amber Extrait', 18500)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 4: Fashion -->
+          <div class="card" data-cat="fashion">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_cat_fashion_1792421786979.jpg" onerror="this.onerror=null;this.src='./public/images/novora_cat_fashion_1792421786979.jpg';" alt="Silk Chiffon Pret" referrerPolicy="no-referrer">
+              <span class="card-tag">Couture Pret</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Atelier</div>
+              <h3 class="card-title">Silk Chiffon Hand-Embroidered Tunic</h3>
+              <p class="card-desc">Pure mulberry silk chiffon with hand-rendered zardozi threadwork and tailored relaxed silhouette.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 24,900</div>
+                <button class="add-btn" onclick="addToBag('Silk Chiffon Embroidered Tunic', 24900)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 5: Makeup -->
+          <div class="card" data-cat="makeup">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_beauty_banner_1793803668180.jpg" onerror="this.onerror=null;this.src='./public/images/novora_beauty_banner_1793803668180.jpg';" alt="Luminous Foundation" referrerPolicy="no-referrer">
+              <span class="card-tag">Signature</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Makeup</div>
+              <h3 class="card-title">Luminous Silk Breathable Foundation</h3>
+              <p class="card-desc">Micro-fine light-diffusing spheres offering medium-buildable second-skin coverage all day.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 6,800</div>
+                <button class="add-btn" onclick="addToBag('Luminous Silk Foundation', 6800)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6: Accessories -->
+          <div class="card" data-cat="accessories">
+            <div class="card-img-wrap">
+              <img class="card-img" src="./images/novora_cat_electronics_1792421788426.jpg" onerror="this.onerror=null;this.src='./public/images/novora_cat_electronics_1792421788426.jpg';" alt="Chronograph Watch" referrerPolicy="no-referrer">
+              <span class="card-tag">Swiss Movement</span>
+            </div>
+            <div class="card-body">
+              <div class="card-brand">NOVORA Horology</div>
+              <h3 class="card-title">Minimalist Rose Gold Chronograph</h3>
+              <p class="card-desc">Sapphire crystal face, 5ATM water resistance, and hand-stitched Italian calfskin leather strap.</p>
+              <div class="card-footer">
+                <div class="card-price">PKR 14,200</div>
+                <button class="add-btn" onclick="addToBag('Rose Gold Chronograph', 14200)">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <!-- Trust Strip -->
+      <section class="trust-strip">
+        <div class="trust-grid">
+          <div class="trust-item">
+            <h4>100% Guaranteed Authenticity</h4>
+            <p>Every piece is sourced directly from certified ateliers and heritage houses.</p>
+          </div>
+          <div class="trust-item">
+            <h4>Nationwide Express Delivery</h4>
+            <p>Delivered securely in custom luxury packaging across all cities in Pakistan.</p>
+          </div>
+          <div class="trust-item">
+            <h4>Bank-Grade Security</h4>
+            <p>Encrypted checkouts powered by state-licensed payment gateways.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="footer-inner">
+          <div class="footer-col">
+            <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:12px;" class="font-serif">NOVORA</div>
+            <p style="color:#78716c;line-height:1.6;">Pakistan's premier destination for curated luxury fashion, couture beauty, and bespoke parfums.</p>
+          </div>
+          <div class="footer-col">
+            <h5>Boutique Collections</h5>
+            <ul>
+              <li><a href="#catalog">Haute Parfumerie</a></li>
+              <li><a href="#catalog">Luxury Pret & Tunics</a></li>
+              <li><a href="#catalog">Artisanal Makeup</a></li>
+              <li><a href="#catalog">Cellular Skincare</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Patron Services</h5>
+            <ul>
+              <li><a href="#" onclick="openLoginNotice()">Patron Sign In</a></li>
+              <li><a href="#" onclick="openLoginNotice()">Track Order</a></li>
+              <li><a href="#" onclick="openLoginNotice()">Shipping & Returns</a></li>
+              <li><a href="#" onclick="openLoginNotice()">Bespoke Consultations</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Contact & Atelier</h5>
+            <p style="color:#78716c;margin-bottom:8px;">Gulberg III, Lahore, Pakistan</p>
+            <p style="color:#78716c;margin-bottom:8px;">concierge@novora.store</p>
+            <p style="color:#78716c;">Mon – Sat: 10:00 AM – 8:00 PM</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          &copy; 2026 NOVORA Luxury E-Commerce. All rights reserved.
+        </div>
+      </footer>
+
+      <!-- Toast Feedback -->
+      <div id="toast" class="toast">
+        <span id="toastMsg">Added to Bag</span>
+      </div>
+
+      </div>
+      <!-- STATIC_FALLBACK_END -->
+    </div>
+
+    <!-- FILE_DIRECT_REDIRECT_START -->
+    <script>
+      if (window.location.protocol === 'file:') {
+        var readyProbe = document.createElement('script');
+        readyProbe.src = './dist/novora-ready.js';
+        readyProbe.onload = function () {
+          if (window.__NOVORA_DIST_READY__) {
+            window.location.replace('./dist/index.html' + window.location.search + window.location.hash);
+          }
+        };
+        document.head.appendChild(readyProbe);
+      }
+
+      var cartItems = [];
+      
+      function addToBag(title, price) {
+        cartItems.push({ title: title, price: price });
+        var badge = document.getElementById('bagCount');
+        if (badge) badge.innerText = cartItems.length;
+        showToast('Added ' + title + ' to your bag.');
+      }
+
+      function showToast(msg) {
+        var t = document.getElementById('toast');
+        var m = document.getElementById('toastMsg');
+        if (t && m) {
+          m.innerText = msg;
+          t.style.display = 'flex';
+          setTimeout(function() { t.style.display = 'none'; }, 2600);
+        }
+      }
+
+      function openCartNotice() {
+        if (cartItems.length === 0) {
+          showToast('Your NOVORA shopping bag is currently empty.');
+        } else {
+          var total = cartItems.reduce(function(sum, i) { return sum + i.price; }, 0);
+          showToast('Shopping bag: ' + cartItems.length + ' items — PKR ' + total.toLocaleString());
+        }
+      }
+
+      function openLoginNotice() {
+        window.location.href = './dist/index.html';
+      }
+
+      function filterCat(cat, el) {
+        var cards = document.querySelectorAll('.novora-static-shell .card');
+        cards.forEach(function(c) {
+          if (cat === 'all' || c.getAttribute('data-cat') === cat) {
+            c.style.display = 'flex';
+          } else {
+            c.style.display = 'none';
+          }
+        });
+        var pills = document.querySelectorAll('.novora-static-shell .cat-pill');
+        pills.forEach(function(p) { p.classList.remove('active'); });
+        if (el) el.classList.add('active');
+      }
+
+      function searchProducts(q) {
+        var query = (q || '').toLowerCase().trim();
+        var cards = document.querySelectorAll('.novora-static-shell .card');
+        cards.forEach(function(c) {
+          var title = (c.querySelector('.card-title') || {}).innerText || '';
+          var desc = (c.querySelector('.card-desc') || {}).innerText || '';
+          var brand = (c.querySelector('.card-brand') || {}).innerText || '';
+          if (!query || (title + ' ' + desc + ' ' + brand).toLowerCase().indexOf(query) !== -1) {
+            c.style.display = 'flex';
+          } else {
+            c.style.display = 'none';
+          }
+        });
+      }
+    </script>
+    <!-- FILE_DIRECT_REDIRECT_END -->
+
+    <!-- React Module: Hydrates full NOVORA application in dev and compiled build -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

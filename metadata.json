@@ -1,0 +1,6 @@
+{
+  "name": "NOVORA Luxury E-Commerce",
+  "description": "Exclusive luxury beauty, fashion, and makeup destination with secure patron registration, OTP verification, Google Drive synchronization, and administrator portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

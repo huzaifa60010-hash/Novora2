@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVORA E-Commerce - Static Offline Preview</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231c1917'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #fafaf9;
+      color: #1c1917;
+      line-height: 1.5;
+    }
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .offline-banner {
+      background: #1c1917;
+      color: #f5f5f4;
+      padding: 12px 20px;
+      font-size: 13px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #292524;
+    }
+    .offline-badge {
+      background: #f59e0b;
+      color: #78350f;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .run-btn {
+      background: #38bdf8;
+      color: #082f49;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 12px;
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e7e5e4;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #0c0a09;
+      text-decoration: none;
+    }
+    nav a {
+      color: #57534e;
+      text-decoration: none;
+      margin: 0 14px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #0c0a09; }
+    .hero {
+      background: linear-gradient(rgba(12,10,9,0.5), rgba(12,10,9,0.7)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #d6d3d1;
+      max-width: 650px;
+      margin: 0 auto 28px;
+      font-weight: 300;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff;
+      color: #0c0a09;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .cta-btn:hover {
+      background: #f5f5f4;
+      transform: translateY(-2px);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 24px;
+    }
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .section-desc {
+      text-align: center;
+      color: #78716c;
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      background: #ffffff;
+      border: 1px solid #e7e5e4;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 12px 24px -6px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+    .product-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #f5f5f4;
+    }
+    .product-info { padding: 20px; }
+    .product-category {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #a8a29e;
+      margin-bottom: 6px;
+    }
+    .product-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1c1917;
+      margin-bottom: 8px;
+    }
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0c0a09;
+      margin-bottom: 16px;
+    }
+    .add-to-cart {
+      width: 100%;
+      background: #1c1917;
+      color: #ffffff;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-to-cart:hover { background: #292524; }
+    footer {
+      background: #0c0a09;
+      color: #a8a29e;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 13px;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Direct Storefront Banner -->
+  <div class="offline-banner">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="offline-badge">Direct Index Launch</span>
+      <span>Open the full <strong>NOVORA</strong> store directly through <code>index.html</code> — no CMD required.</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a class="run-btn" href="./dist/index.html">Open Full Storefront</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="./dist/index.html" class="logo font-serif">NOVORA</a>
+    <nav>
+      <a href="#featured">Featured</a>
+      <a href="./dist/index.html">Full Store</a>
+    </nav>
+    <a href="./dist/index.html" class="add-to-cart" style="width: auto; padding: 8px 18px; text-decoration: none; display: inline-block;">
+      Open Storefront
+    </a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="font-serif">Curated Elegance & Modern Luxury</h1>
+    <p>Discover hand-crafted pieces designed with exceptional quality, timeless aesthetics, and uncompromising craftsmanship.</p>
+    <a href="./dist/index.html" class="cta-btn">Enter NOVORA Store</a>
+  </section>
+
+  <!-- Featured Catalog -->
+  <div class="container" id="featured">
+    <h2 class="section-title font-serif">Featured Collection</h2>
+    <p class="section-desc">Hand-picked luxury goods from the NOVORA catalog.</p>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Chronograph Watch">
+        <div class="product-info">
+          <div class="product-category">Timepieces</div>
+          <h3 class="product-title">Minimalist Chronograph</h3>
+          <div class="product-price">PKR 24,500</div>
+          <a class="add-to-cart" style="display:block;text-align:center;text-decoration:none;" href="./dist/index.html">Open in Store</a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Wireless Headphones">
+        <div class="product-info">
+          <div class="product-category">Audio</div>
+          <h3 class="product-title">Studio Wireless Headphones</h3>
+          <div class="product-price">PKR 38,900</div>
+          <a class="add-to-cart" style="display:block;text-align:center;text-decoration:none;" href="./dist/index.html">Open in Store</a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" alt="Smart Watch">
+        <div class="product-info">
+          <div class="product-category">Wearables</div>
+          <h3 class="product-title">Sapphire Smart Watch</h3>
+          <div class="product-price">PKR 45,000</div>
+          <a class="add-to-cart" style="display:block;text-align:center;text-decoration:none;" href="./dist/index.html">Open in Store</a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img class="product-img" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="Mechanical Keyboard">
+        <div class="product-info">
+          <div class="product-category">Peripherals</div>
+          <h3 class="product-title">Custom Mechanical Keyboard</h3>
+          <div class="product-price">PKR 19,200</div>
+          <a class="add-to-cart" style="display:block;text-align:center;text-decoration:none;" href="./dist/index.html">Open in Store</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="font-size:18px;font-weight:700;letter-spacing:0.1em;color:#ffffff;margin-bottom:8px;" class="font-serif">NOVORA</div>
+    <p>&copy; 2026 NOVORA E-Commerce Store. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

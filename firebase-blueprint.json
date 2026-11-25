@@ -1,0 +1,166 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Registered customer or administrator account profile.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "admin"] },
+        "authProvider": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Catalog product stored in the admin-selected base currency with optional attribute groups and variant SKUs.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sku": { "type": "string" },
+        "name": { "type": "string" },
+        "baseCurrency": { "type": "string" },
+        "originalPrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "stock": { "type": "number" },
+        "maxOrderQuantity": { "type": "number" },
+        "variants": { "type": "object" },
+        "status": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "sellingPrice", "stock"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Immutable customer purchase order with account Gmail, courier delivery address, payment state, locked currency/FX snapshot, and line items.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "userId": { "type": "string" },
+        "accountEmail": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "customer": { "type": "object" },
+        "deliveryAddress": { "type": "object" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "taxAmount": { "type": "number" },
+        "taxRatePercentage": { "type": "number" },
+        "shippingRegion": { "type": "string" },
+        "discount": { "type": "number" },
+        "total": { "type": "number" },
+        "currency": { "type": "string" },
+        "baseCurrency": { "type": "string" },
+        "baseSubtotal": { "type": "number" },
+        "baseTotal": { "type": "number" },
+        "exchangeRateUsed": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "orderStatus": { "type": "string" },
+        "isArchived": { "type": "boolean" }
+      },
+      "required": ["id", "orderNumber", "userId", "customer", "deliveryAddress", "items", "total"]
+    },
+    "PaymentTransaction": {
+      "title": "PaymentTransaction",
+      "description": "Recorded card or gateway settlement transaction linked to an order.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "orderId": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "transactionReference": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "orderId", "orderNumber", "amount"]
+    },
+    "AdminConfig": {
+      "title": "AdminConfig",
+      "description": "Dynamic allowlist of administrator email addresses and linked Google Drive destination.",
+      "type": "object",
+      "properties": {
+        "authorizedAdminEmails": { "type": "array" },
+        "primaryAdminEmail": { "type": "string" },
+        "googleDriveOwnerEmail": { "type": "string" },
+        "googleDriveFolderId": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PublicPaymentGateway": {
+      "title": "PublicPaymentGateway",
+      "description": "Public checkout configuration for payment methods and regional bank details.",
+      "type": "object",
+      "properties": {
+        "provider": { "type": "string" },
+        "providerName": { "type": "string" },
+        "isTestMode": { "type": "boolean" },
+        "cardsEnabled": { "type": "boolean" },
+        "codEnabled": { "type": "boolean" },
+        "bankTransferEnabled": { "type": "boolean" },
+        "maxCodAmount": { "type": "number" },
+        "bankDetails": { "type": "object" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "PricingConfig": {
+      "title": "PricingConfig",
+      "description": "Admin-controlled base currency, enabled display currencies, price rounding, tax percentage, and regional shipping rules.",
+      "type": "object",
+      "properties": {
+        "baseCurrency": { "type": "string" },
+        "defaultCustomerCurrency": { "type": "string" },
+        "enabledCurrencies": { "type": "array" },
+        "exchangeRateRefreshMinutes": { "type": "number" },
+        "priceRoundingMode": { "type": "string", "enum": ["two_decimals", "nearest_integer", "ending_99", "none"] },
+        "shippingCharge": { "type": "number" },
+        "freeShippingThreshold": { "type": "number" },
+        "taxEnabled": { "type": "boolean" },
+        "taxRatePercentage": { "type": "number" },
+        "shippingRegions": { "type": "array" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Customer and admin user profiles."
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Storefront products priced in admin baseCurrency with optional variant SKUs."
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "Cloud-synced customer orders."
+    },
+    "/paymentTransactions/{txId}": {
+      "schema": { "$ref": "#/entities/PaymentTransaction" },
+      "description": "Cloud-synced payment transaction records."
+    },
+    "/settings/adminConfig": {
+      "schema": { "$ref": "#/entities/AdminConfig" },
+      "description": "Administrator email allowlist."
+    },
+    "/settings/paymentGateway": {
+      "schema": { "$ref": "#/entities/PublicPaymentGateway" },
+      "description": "Publicly readable checkout payment settings."
+    },
+    "/settings/pricingConfig": {
+      "schema": { "$ref": "#/entities/PricingConfig" },
+      "description": "Publicly readable store pricing, currency, tax, and regional shipping settings."
+    }
+  }
+}
